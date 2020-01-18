@@ -1,0 +1,25 @@
+
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+        <div class="row list">
+            <div class="col-sm-12 col-md-9">
+                <h1 class="text-center">Lista kursów WIEiT</h1>
+            </div>
+            <div class="col-sm-12 col-md-3 flex">
+              <button type="button" class="btn btn-secondary" (click)="negateFilterFlag()" *ngIf="!filterFlag">Pokaż filtry</button>
+              <button type="button" class="btn btn-secondary" (click)="negateFilterFlag()" *ngIf="filterFlag">Ukryj filtry</button>
+          </div>
+        </div>
+        <div class ="row list flex" *ngIf="filterFlag">
+          <app-filter></app-filter>
+        </div>
+        <div class="row list">
+            <app-courses-list-element class="zebra"
+            *ngFor="let course of (courses | search: courseFilter)" [kurs] = "course"
+            (removeCourse)="removeCourse($event)">
+            </app-courses-list-element>
+        </div>
+    </div>
+  </div>
+</div>

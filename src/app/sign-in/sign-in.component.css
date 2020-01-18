@@ -1,0 +1,11 @@
+.failed{
+  color: red;
+  font-style: italic;
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.btn-secondary{
+  margin-left: 20px;
+}

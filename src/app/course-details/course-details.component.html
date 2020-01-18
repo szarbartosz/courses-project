@@ -1,0 +1,53 @@
+<ng-template #t let-fill="fill">
+    <span class="star" style="font-size: 1.8rem" [class.full]="fill === 100">
+      <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+    </span>
+  </ng-template>
+<div class="container">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Szczegóły kursu: <br><strong>{{course.name}}</strong></h2>
+            </div>
+            <div class="col-lg-6">
+                <img class="rounded mx-auto d-block" src="{{course.img}}">
+            </div>
+            <div class="col-12">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>Ocena: </strong> 
+                        <ngb-rating [(rate)]="course.rate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Semestr: </strong> {{ course.semester }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>ECTS: </strong> {{ course.ects }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Typ: </strong> {{ showCourseType() }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Liczba miejsc: </strong> {{ course.capacity }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Opis: </strong> {{ course.description }}
+                    </li>
+                    <li class="list-group-item">
+                        <app-rating [kurs] = "course"></app-rating>
+                    </li>
+                    <li class="list-group-item">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 footer">
+            <button type="button" class="btn btn-secondary" (click)="goBack()">wróć</button>
+        </div>
+      </div>
+    </div>
+</div>
+  
+  
+  

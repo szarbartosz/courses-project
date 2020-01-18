@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-12">
+      <strong>Oceń kurs:</strong>
+  </div>
+  <div class="stars">
+    <ngb-rating [(rate)]="currentRate">
+      <ng-template let-fill="fill" let-index="index">
+        <span class="star" [class.filled]="fill === 100" >	&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+  </div>
+  <div class="btn">
+    <button class="btn btn-success" (click)="rate()">Zapisz</button>
+  </div>
+</div>

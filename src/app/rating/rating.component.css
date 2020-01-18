@@ -1,0 +1,41 @@
+.btn{
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .stars{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .opis{
+    text-align: center;
+    margin-top: 20rem;
+    margin-bottom: 20rem;
+  }
+  
+  .opisrow{
+    margin-top: 20rem;
+    margin-bottom: 20rem;
+  }
+  
+  .star {
+    font-size: 2.8rem;
+    color: #d3d3d3;
+  }
+  .filled {
+    color: gold;
+  }
+  .bad {
+    color: #deb0b0;
+  }
+  .filled.bad {
+    color: #ff1e1e;
+  }
+  
+  .col-12{
+    text-align: center;
+    font-size: 20px;
+  }

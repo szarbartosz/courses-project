@@ -1,0 +1,21 @@
+.caption{
+    padding-bottom: 20px;
+}
+
+.btn{
+    cursor: pointer;
+  }
+  
+.submit{
+    text-align: center;
+}
+  
+.error{
+    color: red;
+    margin: 8px;
+}
+  
+.correct{
+    color: green;
+    margin: 8px;
+}

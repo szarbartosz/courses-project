@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light">Logowanie</h1>
+      <div style="height: 60px"></div>
+      <form accept-charset="UTF-8" role="form">
+        <fieldset>
+          <div class="form-group">
+              <input type="email" class="form-control" placeholder="e-mail" [(ngModel)]="user.email" name="email" required>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="hasło" [(ngModel)]="user.password" name="password" required>
+          </div>
+            <input class="btn btn-lg btn-success btn-block" type="submit" value="Zaloguj" (click)="logIn()">
+            <div class="failed" *ngIf="signInFailed">Niepoprawny e-mail lub błędne hasło</div>
+        </fieldset>
+      </form>
+      <div style="height: 40px"></div>
+      <div class="col-12">
+        <i>Nie masz jeszcze konta? Zarejestruj się!</i>
+        <button type="button" class="btn btn-secondary" routerLink="/sign-up">Rejestracja</button>
+      </div>
+      <div style="height: 40px"></div>
+    </div>
+  </div>
+</div>
+
+

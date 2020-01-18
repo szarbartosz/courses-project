@@ -1,0 +1,24 @@
+<form role="form">
+        <div class="form-group">
+            <strong>Nazwa kursu: </strong>
+            <input placeholder="Szukany kurs" name="name" [(ngModel)]="name" type="text" class="validate">
+            <br><br>
+            <div class="custom-slider">
+                <ng5-slider [(value)]="semester"  [options]="semesterOptions"></ng5-slider>
+            </div>
+            <div class="custom-slider">
+                <strong>ECTS: </strong>
+                <ng5-slider [(value)]="minects" [(highValue)]="maxects" [options]="ectsOptions"></ng5-slider>
+            </div>
+            <div class="custom-slider">
+                <strong>Ocena: </strong>
+                <ng5-slider [(value)]="minrate" [(highValue)]="maxrate" [options]="rateOptions"></ng5-slider>
+            </div>
+            <div class="submit">
+                <hr>
+                <button  class="btn btn-info" (click)="filter()">Filtruj</button>
+                <button  class="btn btn-danger float-right" (click)="clearFilter()">Wyczyść</button>
+            </div>
+        </div>
+      </form>
+      

@@ -1,0 +1,17 @@
+.flex{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.list{
+    padding-bottom: 40px;
+}
+
+.zebra:nth-child(odd) {
+    background-color: #E9E9E9;
+}
+
+.zebra:nth-child(even) {
+    background-color: #FFFFFF;
+}

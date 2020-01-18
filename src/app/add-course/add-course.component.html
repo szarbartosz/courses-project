@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+        <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center caption">Dodawanie kursu</h1>
+        </div>
+        </div>
+        <form class="form text-center" role="form">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <hr>
+                    <div class="form-group">
+                        Nazwa kursu:
+                        <input placeholder="Nazwa kursu" name="name" [(ngModel)]="course.name" type="text" class="validate" #name="ngModel" required/>
+                        <div class="error" *ngIf="name.touched && name.errors?.required">
+                            Wymagane podanie nazwy kursu.
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="range" name="semester" class="custom-range" [(ngModel)]="course.semester" min="1" max="10" step="1"/>
+                        Semestr: {{course.semester}}
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="range" name="ects" class="custom-range" [(ngModel)]="course.ects" min="0" max="12" step="1"/>
+                        Punkty ECTS: {{course.ects}}
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        Liczba miejsc:
+                        <input placeholder="Liczba miejsc" name="capacity" [(ngModel)]="course.capacity" type="number"
+                        class="validate" #capacity="ngModel"  pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$" required/>
+                        <div class="error" *ngIf="capacity.touched && capacity.errors?.required">
+                            Wymagane podanie liczby miejsc na dany kurs.
+                        </div>
+                        <div class="error" *ngIf="capacity.errors?.pattern && capacity.touched">
+                            Dozwolone są jedynie liczby naturalne.
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        Typ zajęć:
+                        <select  [(ngModel)]="course.type" name="type">
+                            <option [ngValue]="type"  *ngFor="let type of types">{{type}}</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <textarea placeholder="Opis Kursu" ref-textarea [(ngModel)]="course.description"  name="desription" rows="4"
+                        cols="20" required #description = "ngModel"></textarea>
+                        <div class="error" *ngIf="description.touched && description.errors?.required">
+                            Wymagane podanie opisu kursu.
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input placeholder="Adres URL zdjęcia kursu" name="image" [(ngModel)]="course.img" type="text" class="validate"
+                            #courseImage="ngModel"  pattern="https://.+\.[jpg|gif|png|jpeg].*" required/>
+                        <!--<div class="error" *ngIf="courseImage.touched && courseImage.errors?.required">
+                            Wymagane podanie adresu url zdjęcia kursu.
+                        </div>
+                        <div class="error" *ngIf="courseImage.errors?.pattern && courseImage.touched">
+                            Niepoprawny adres url.
+                        </div>-->
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="submit">
+                <a class="btn btn-secondary text-white" (click)="addCourse()">Zapisz</a>
+                <div class = "error" *ngIf="error">
+                    Wypełnij formularz poprawnie.
+                </div>
+                <div class = "correct" *ngIf="correct">
+                    Dodano kurs.
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+    
