@@ -8,34 +8,43 @@
       <div class="card-body p-5">
         <div class="row">
             <div class="col-lg-6">
-                <h2>Szczegóły kursu: <br><strong>{{course.name}}</strong></h2>
+                <h2>Szczegóły kursu: <br><strong>{{course$.name}}</strong></h2>
+                <br>
+                <div *ngIf="!ifEnrolled() && course$.students.length < course$.capacity" class="inline-block">
+                    <button  type="button" class="btn btn-success" (click)="enroll()">Zapisz się</button>
+                </div>
+                <div *ngIf="ifEnrolled()" class="inline-block">
+                    <button type="button" class="btn btn-danger" (click)="disenroll()">Wypisz się</button>
+                </div>
             </div>
             <div class="col-lg-6">
-                <img class="rounded mx-auto d-block" src="{{course.img}}">
+                <img class="rounded mx-auto d-block" src="{{course$.img}}">
             </div>
             <div class="col-12">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <strong>Ocena: </strong> 
-                        <ngb-rating [(rate)]="course.rate" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+                        <strong>Ocena: </strong> {{ courseRating() }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Semestr: </strong> {{ course.semester }}
+                        <strong>Semestr: </strong> {{ course$.semester }}
                     </li>
                     <li class="list-group-item">
-                        <strong>ECTS: </strong> {{ course.ects }}
+                        <strong>ECTS: </strong> {{ course$.ects }}
                     </li>
                     <li class="list-group-item">
                         <strong>Typ: </strong> {{ showCourseType() }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Liczba miejsc: </strong> {{ course.capacity }}
+                        <strong>Liczba wszystkich miejsc: </strong> {{ course$.capacity }}
+                    </li>
+                    <li class="list-group-item" *ngIf="course$.students.length < course$.capacity; else elseBlock">
+                        <strong>Liczba wolnych miejsc: </strong> {{ course$.capacity - course$.students.length }}
+                        <ng-template #elseBlock>brak wolnych miejsc</ng-template>
                     </li>
                     <li class="list-group-item">
-                        <strong>Opis: </strong> {{ course.description }}
-                    </li>
-                    <li class="list-group-item">
-                        <app-rating [kurs] = "course"></app-rating>
+                        <strong>Oceń kurs: </strong>
+                        <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0"
+                        (click)="addRate()" max="5"></ngb-rating>
                     </li>
                     <li class="list-group-item">
                     </li>

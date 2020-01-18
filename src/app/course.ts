@@ -1,7 +1,7 @@
 export enum Types {
-    Wykład,
-    Ćwiczenia,
-    Laboratoria
+    wykład,
+    ćwiczenia,
+    laboratoria
 }
 
 export interface Course{
@@ -13,7 +13,6 @@ export interface Course{
     capacity: number;
     img: string;
     description: string;
-    rate: number;
-    rateSum: number;
-    rateNo: number;
+    rate: number[];
+    students: string[];
 }

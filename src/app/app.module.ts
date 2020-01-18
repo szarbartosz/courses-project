@@ -1,12 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,11 +25,11 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { FilterComponent } from './filter/filter.component';
 import { SearchPipe } from './search.pipe';
 import { Ng5SliderModule } from 'ng5-slider';
-import { RatingComponent } from './rating/rating.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { InMemoryDataService } from './in-memory-data.service';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDxnejX1tdsjc4tSlFe9oLJVJv6xI2c0Uo",
@@ -49,23 +54,28 @@ const firebaseConfig = {
     CourseDetailsComponent,
     FilterComponent,
     SearchPipe,
-    RatingComponent,
     SignInComponent,
     SignUpComponent,
     NotFoundComponent,
-    EditCourseComponent
+    EditCourseComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     Ng5SliderModule,
     NgbRatingModule,
     NgbModule,
+    RouterModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,// do obsługi autentykacji
     AngularFirestoreModule,        //  do obslugibaz danych
-    AngularFireDatabaseModule//  do obslugibaz danych
+    AngularFireDatabaseModule,//  do obslugibaz danych
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]

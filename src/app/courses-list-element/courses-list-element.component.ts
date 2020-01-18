@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Course } from '../course'
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-courses-list-element',
@@ -11,7 +12,9 @@ export class CoursesListElementComponent implements OnInit {
   @Input('kurs') course: Course;
   @Output() removeCourse = new EventEmitter<Course> ();
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
@@ -31,5 +34,20 @@ export class CoursesListElementComponent implements OnInit {
       case 3:
     }
   }
+
+  courseRating(): number {
+    let sum = 0;
+    let counter = 0;
+    if (this.course.rate.length > 0) {
+      this.course.rate.forEach(e => {
+        counter++;
+        sum += e;
+      });
+      return Math.round((sum / counter) * 10) / 10;
+    } else {
+      return 0;
+    }
+  }
+
 
 }

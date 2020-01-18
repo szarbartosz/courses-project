@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as uuid from 'uuid';
+import {ActivatedRoute} from '@angular/router';
 
 import { Course, Types } from '../course'
 import { CourseService } from '../course.service'
@@ -17,21 +19,23 @@ export class AddCourseComponent implements OnInit {
 
   setUp() {
     this.course = {
-      id: 0,
+      id: uuid.v4(),
       name: '',
       ects: 0,
-      type: Types.Ćwiczenia,
+      type: Types.ćwiczenia,
       semester: 1,      
       capacity: null,
       img: '',
       description: '',
-      rate: 0,
-      rateSum: 0,
-      rateNo: 0
+      rate: [],
+      students: []
     };
   }
 
-  constructor(private courseService: CourseService) { }
+  constructor(
+    private courseService: CourseService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.setUp();
@@ -39,32 +43,15 @@ export class AddCourseComponent implements OnInit {
 
   validate(): boolean {
     if (this.course.name === '') {return false; }
-    if (this.course.capacity === null) {return false; }
+    if (this.course.capacity === null || this.course.capacity <= 0) {return false; }
     if (this.course.description === '') {return false; }
-    if (this.course.img.match(/https?:[\/|.|\w|\s|-]*\.(?:jpg|gif|png).*/g) === null) { return false; }
+    if (this.course.img.match(/https?:[\/|.|\w|\s|-]*\.(?:jpg|gif|png|jpeg).*/g) === null) { return false; }
     return true;
   }
 
   addCourse() {
-    this.error = false;
     if (this.validate()) {
-      const course = {
-        id: this.courseService.coursesNo,
-        name: this.course.name,
-        semester: this.course.semester,
-        ects: this.course.ects,
-        type: this.course.type,
-        capacity: this.course.capacity,
-        img: this.course.img,
-        description: this.course.description,
-        rateSum: this.course.rateSum,
-        rateNo: this.course.rateNo,
-        rate: this.course.rate
-      };
-      this.courseService.addCourse(course);
-      this.correct = true;
-    } else {
-      this.error = true;
+      this.courseService.addCourse(this.course);
     }
   }
 

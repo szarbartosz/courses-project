@@ -60,8 +60,8 @@ export class AuthService {
     });
   }
 
-  currentUser() {
-    this.userData =  this.angularFireAuth.authState;
+  getCurrentUser() {
+    this.userData = this.angularFireAuth.authState;
     return this.angularFireAuth.auth.currentUser;
   }
 

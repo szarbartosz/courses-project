@@ -19,13 +19,14 @@
                         <strong>Typ: </strong> {{ showCourseType() }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Ocena: </strong> {{ course.rate | number : '.1-1'}}
+                        <strong>Ocena: </strong> {{ courseRating() }}
                     </li>
                 </ul>
             </div>
         </div>
         <div class="col-md-12 col-lg-3">
             <button type="button" class="btn btn-secondary" routerLink="/course-details/{{ course.id }}"> Zobacz więcej</button>
+            <button type="button" class="btn btn-primary" routerLink="/edit-course/{{course.id}}">Edytuj kurs</button>
             <button type="button" class="btn btn-danger" (click)="deleteCourse()">Usuń kurs</button>
         </div>
     </div>

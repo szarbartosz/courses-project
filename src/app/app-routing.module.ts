@@ -8,6 +8,7 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component'
+import { EditCourseComponent } from './edit-course/edit-course.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'course-details/:id', component: CourseDetailsComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'sign-in', component: SignInComponent},
+  {path: 'edit-course/:id', component: EditCourseComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

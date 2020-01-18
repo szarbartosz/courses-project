@@ -49,28 +49,22 @@ export class SearchPipe implements PipeTransform {
     }
 
     if (rating.active) {
-      courses =  courses.filter(course =>
-        (course.rate <= rating.maxvalue && course.rate >= rating.minvalue)
-      );
+      courses =  courses.filter(course => {
+        let sum = 0;
+        let counter = 0;
+        course.rate.forEach(element => {
+          counter++;
+          sum += element;
+        });
+        let rate;
+        if (sum === 0 ) {
+          rate = 0;
+        } else {
+          rate =  Math.round((sum / counter) * 10) / 10;
+        }
+        return (rate <= rating.maxvalue && rate >= rating.minvalue);
+      });
     }
-
-    // if (rating.active) {
-    //   courses =  courses.filter(course => {
-    //     let sum = 0;
-    //     let counter = 0;
-    //     course.rate.forEach(element => {
-    //       counter++;
-    //       sum += element.rating;
-    //     });
-    //     let rate;
-    //     if (sum === 0 ) {
-    //       rate = 0;
-    //     } else {
-    //       rate =  Math.round((sum / counter) * 10) / 10;
-    //     }
-    //     return (rate <= rating.maxvalue && rate >= rating.minvalue);
-    //   });
-    // }
 
     return courses;
   }

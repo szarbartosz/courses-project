@@ -27,8 +27,23 @@ img{
   color: gold;
 }
 
+.btn{
+  margin: 20px;
+}
+
 @media (max-width: 980px) {
   .container{
     text-align: center;
   }
+}
+
+ngb-rating{
+  font-size: 1.4rem;
+  color: orange;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
 }

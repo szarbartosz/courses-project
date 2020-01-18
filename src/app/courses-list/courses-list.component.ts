@@ -24,8 +24,9 @@ export class CoursesListComponent implements OnInit {
       .subscribe(courses => this.courses = courses);
   }
 
-  removeCourse(course: Course){
-    this.courseService.deleteCourse(course);
+  removeCourse(course: Course): void {
+    this.courses = this.courses.filter(c => c !== course);
+    this.courseService.deleteCourse(course).subscribe();
   }
 
   negateFilterFlag(){
