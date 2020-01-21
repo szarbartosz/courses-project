@@ -9,17 +9,18 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component'
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/course-list', pathMatch: 'full'},
+  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'course-list', component: CoursesListComponent},
-  {path: 'add-course', component: AddCourseComponent},
-  {path: 'course-details/:id', component: CourseDetailsComponent},
+  {path: 'course-list', component: CoursesListComponent, canActivate: [AuthGuard]},
+  {path: 'add-course', component: AddCourseComponent, canActivate: [AuthGuard]},
+  {path: 'course-details/:id', component: CourseDetailsComponent, canActivate: [AuthGuard]},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'sign-in', component: SignInComponent},
-  {path: 'edit-course/:id', component: EditCourseComponent},
+  {path: 'edit-course/:id', component: EditCourseComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 

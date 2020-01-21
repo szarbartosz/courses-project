@@ -36,8 +36,7 @@ export class AuthService {
   signIn(email: string, password: string) {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
       .then(() => {
-    return this.angularFireAuth
-      .auth
+    return this.angularFireAuth.auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('You are Successfully logged in!');
@@ -56,7 +55,7 @@ export class AuthService {
       .signOut().then(() => {
       localStorage.removeItem('user');
       this.dispChange.next(false);
-      this.router.navigate(['/sign-in']);
+      this.router.navigate(['/dashboard']);
     });
   }
 
