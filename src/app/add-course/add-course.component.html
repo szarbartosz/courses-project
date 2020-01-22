@@ -50,7 +50,7 @@
                     <hr>
                     <div class="form-group">
                         <textarea placeholder="Opis Kursu" ref-textarea [(ngModel)]="course.description"  name="desription" rows="4"
-                        cols="20" required #description = "ngModel"></textarea>
+                        cols="40" required #description = "ngModel"></textarea>
                         <div class="error" *ngIf="description.touched && description.errors?.required">
                             Wymagane podanie opisu kursu.
                         </div>
@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-2 submit">
-                    <a class="btn btn-success text-white" (click)="addCourse()">Zapisz</a>
+                    <a class="btn btn-success text-white" (click)="addCourse()">zapisz</a>
                 </div>
                 <div class="col-2">
                     <button type="button" class="btn btn-secondary" routerLink="/course-list">wróć</button>

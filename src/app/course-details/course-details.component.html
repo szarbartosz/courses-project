@@ -11,10 +11,10 @@
                 <h2>Szczegóły kursu: <br><strong>{{course$.name}}</strong></h2>
                 <br>
                 <div *ngIf="!ifEnrolled() && course$.students.length < course$.capacity" class="inline-block">
-                    <button  type="button" class="btn btn-success" (click)="enroll()">Zapisz się</button>
+                    <button  type="button" class="btn btn-success" (click)="enroll()">zapisz się</button>
                 </div>
                 <div *ngIf="ifEnrolled()" class="inline-block">
-                    <button type="button" class="btn btn-danger" (click)="disenroll()">Wypisz się</button>
+                    <button type="button" class="btn btn-danger" (click)="disenroll()">wypisz się</button>
                 </div>
             </div>
             <div class="col-lg-6">
