@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { FirestoreService } from './firestore.service';
 
 import { Course } from './course';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -18,54 +19,51 @@ export class CourseService {
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private fireservice: FirestoreService
   ) { }
 
   getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(this.coursesUrl);
+    //return this.http.get<Course[]>(this.coursesUrl);
+    return this.fireservice.getdata();
   }
   
   getCourse(id: string): Observable<Course> {
-    const url = `${this.coursesUrl}/${id}`;
-    return this.http.get<Course>(url);
+    // const url = `${this.coursesUrl}/${id}`;
+    // return this.http.get<Course>(url);
+    return this.fireservice.getOneData(id);
   }
 
   addCourse(course: Course) {
-    return this.http.post<Course>(this.coursesUrl, course, this.httpOptions)
-      .subscribe( res => {
-        this.getCourses().subscribe(resp => {
-          this.currentCourses.next(resp);
-      });
-    });
+    // return this.http.post<Course>(this.coursesUrl, course, this.httpOptions)
+    //   .subscribe( res => {
+    //     this.getCourses().subscribe(resp => {
+    //       this.currentCourses.next(resp);
+    //   });
+    // });
+    return this.fireservice.createdata(course);
   }
 
-  deleteCourse(course: Course): Observable<{}> {
-    const url = `${this.coursesUrl}/${course.id}`;
-    return this.http.delete<Course>(url, this.httpOptions);
+  deleteCourse(course: Course)/*: Observable<{}>*/ {
+    // const url = `${this.coursesUrl}/${course.id}`;
+    // return this.http.delete<Course>(url, this.httpOptions);
+    return this.fireservice.deletedata(course.id);
   }
 
+  updateCourse(course: Course, id: string) {
+    // return this.http.put<Course>(`${this.coursesUrl}/${id}`, course, this.httpOptions)
+    //   .subscribe( res => {
+    //     this.getCourses().subscribe( resp => {
+    //       this.currentCourses.next(resp);
+    //     });
+    //   });
+    return this.fireservice.updatedata(course);
+  }  
+  
   subscribeCourses(): Observable<Course[]> {
     this.getCourses().subscribe(res => {
       this.currentCourses.next(res);
     });
     return this.currentCourses.asObservable();
   }
-
-  updateCourse(course: Course, id: string) {
-    return this.http.put<Course>(`${this.coursesUrl}/${id}`, course, this.httpOptions)
-      .subscribe( res => {
-        this.getCourses().subscribe( resp => {
-          this.currentCourses.next(resp);
-        });
-      });
-  }
-
-  // addRating(currentRate: 1 | 2 | 3 | 4 | 5, id: string) {
-  //   const course = this.getCourse(id);
-  //   course.rateSum = course.rateSum + currentRate;
-  //   course.rateNo = course.rateNo + 1;
-  //   course.rate = course.rateSum / course.rateNo;
-  // }
-
-  
 }

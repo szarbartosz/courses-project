@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as uuid from 'uuid';
 import {ActivatedRoute} from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Course, Types } from '../course'
 import { CourseService } from '../course.service'
@@ -34,7 +35,8 @@ export class AddCourseComponent implements OnInit {
 
   constructor(
     private courseService: CourseService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -52,7 +54,15 @@ export class AddCourseComponent implements OnInit {
   addCourse() {
     if (this.validate()) {
       this.courseService.addCourse(this.course);
+      this.correct = true;
+      this.error = false;
+    }
+    else {
+      this.error = true;
     }
   }
 
+  goBack(): void{
+    this.location.back();
+  }
 }

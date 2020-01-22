@@ -57,7 +57,7 @@ const firebaseConfig = {
     SignInComponent,
     SignUpComponent,
     NotFoundComponent,
-    EditCourseComponent,
+    EditCourseComponent
   ],
   imports: [
     BrowserModule,

@@ -32,7 +32,7 @@
                         <strong>ECTS: </strong> {{ course$.ects }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Typ: </strong> {{ showCourseType() }}
+                        <strong>Typ: </strong> {{ course$.type }}
                     </li>
                     <li class="list-group-item">
                         <strong>Liczba wszystkich miejsc: </strong> {{ course$.capacity }}
@@ -40,6 +40,9 @@
                     <li class="list-group-item" *ngIf="course$.students.length < course$.capacity; else elseBlock">
                         <strong>Liczba wolnych miejsc: </strong> {{ course$.capacity - course$.students.length }}
                         <ng-template #elseBlock>brak wolnych miejsc</ng-template>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Opis kursu: </strong> {{ course$.description }}
                     </li>
                     <li class="list-group-item">
                         <strong>Oceń kurs: </strong>

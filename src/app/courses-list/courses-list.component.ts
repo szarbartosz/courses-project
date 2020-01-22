@@ -19,14 +19,14 @@ export class CoursesListComponent implements OnInit {
   filterSubscription: Subscription;
   courseFilter: CourseFilter = null;
 
-  getCourses(): void{
-    this.courseService.getCourses()
-      .subscribe(courses => this.courses = courses);
-  }
+  // getCourses(): void{
+  //   this.courseService.getCourses()
+  //     .subscribe(courses => this.courses = courses);
+  // }
 
   removeCourse(course: Course): void {
     this.courses = this.courses.filter(c => c !== course);
-    this.courseService.deleteCourse(course).subscribe();
+    this.courseService.deleteCourse(course)/*.subscribe()*/;
   }
 
   negateFilterFlag(){
