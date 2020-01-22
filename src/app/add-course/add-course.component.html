@@ -74,6 +74,14 @@
                 <div class="col-4"></div>
                 <div class="col-2 submit">
                     <a class="btn btn-success text-white" (click)="addCourse()">Zapisz</a>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-secondary" routerLink="/course-list">wróć</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
                     <div class = "error" *ngIf="error">
                         Wypełnij formularz poprawnie.
                     </div>
@@ -81,10 +89,6 @@
                         Dodano kurs.
                     </div>
                 </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-secondary" (click)="goBack()">wróć</button>
-                </div>
-                <div class="col-4"></div>
             </div>
         </form>
     </div>

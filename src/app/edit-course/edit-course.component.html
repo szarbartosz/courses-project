@@ -76,14 +76,15 @@
             </div>
             <div class="col-md-4"></div>
             </div>
-            <div class="submit">
-            <a  class="btn btn-success text-white" (click)="saveCourse()" routerLink="/course-list">Zapisz</a>
-            <!--<div class="error" *ngIf="err">
-              Wypełnij formularz poprawnie!
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-2 submit">
+                  <a  class="btn btn-success text-white" (click)="saveCourse()" routerLink="/course-list">Zapisz</a>
               </div>
-              <div class="good" *ngIf="good">
-              Zmodyfikowano kurs.
-              </div>-->
+              <div class="col-2">
+                  <button type="button" class="btn btn-secondary" routerLink="/course-list">wróć</button>
+              </div>
+              <div class="col-4"></div>
             </div>
       </form>    
       <div style="height: 40px"></div>
