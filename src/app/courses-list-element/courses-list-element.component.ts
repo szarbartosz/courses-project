@@ -23,18 +23,6 @@ export class CoursesListElementComponent implements OnInit {
     this.removeCourse.emit(this.course);
   }
 
-  // showCourseType(): string {
-  //   switch (this.course.type) {
-  //     case 0:
-  //       return 'Wykład';
-  //     case 1:
-  //       return 'Ćwiczenia';
-  //     case 2:
-  //       return 'Labolatoria';
-  //     case 3:
-  //   }
-  // }
-
   courseRating(): number {
     let sum = 0;
     let counter = 0;

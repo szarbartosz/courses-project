@@ -24,39 +24,22 @@ export class CourseService {
   ) { }
 
   getCourses(): Observable<Course[]> {
-    //return this.http.get<Course[]>(this.coursesUrl);
     return this.fireservice.getdata();
   }
   
   getCourse(id: string): Observable<Course> {
-    // const url = `${this.coursesUrl}/${id}`;
-    // return this.http.get<Course>(url);
     return this.fireservice.getOneData(id);
   }
 
   addCourse(course: Course) {
-    // return this.http.post<Course>(this.coursesUrl, course, this.httpOptions)
-    //   .subscribe( res => {
-    //     this.getCourses().subscribe(resp => {
-    //       this.currentCourses.next(resp);
-    //   });
-    // });
     return this.fireservice.createdata(course);
   }
 
-  deleteCourse(course: Course)/*: Observable<{}>*/ {
-    // const url = `${this.coursesUrl}/${course.id}`;
-    // return this.http.delete<Course>(url, this.httpOptions);
+  deleteCourse(course: Course) {
     return this.fireservice.deletedata(course.id);
   }
 
   updateCourse(course: Course, id: string) {
-    // return this.http.put<Course>(`${this.coursesUrl}/${id}`, course, this.httpOptions)
-    //   .subscribe( res => {
-    //     this.getCourses().subscribe( resp => {
-    //       this.currentCourses.next(resp);
-    //     });
-    //   });
     return this.fireservice.updatedata(course);
   }  
   

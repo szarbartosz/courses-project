@@ -62,7 +62,6 @@
               <div class="course-form">
                 <label>Link do zdjęcia kursu:</label>
                   <br>
-                  <!--TODO: url validation-->
                   <input placeholder="Url zdjęcia kursu" name="image" [(ngModel)]="course.img" type="text" class="validate"
                     #courseImage="ngModel"  pattern="https?://.+\.[jpg|gif|png].*" required>
                 <div class="error" *ngIf="courseImage.touched && courseImage.errors?.required">
@@ -76,14 +75,15 @@
             </div>
             <div class="col-md-4"></div>
             </div>
-            <div class="submit">
-            <a  class="btn btn-success text-white" (click)="saveCourse()" routerLink="/course-list">Zapisz</a>
-            <!--<div class="error" *ngIf="err">
-              Wypełnij formularz poprawnie!
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-2 submit">
+                  <a  class="btn btn-success text-white" (click)="saveCourse()" routerLink="/course-list">zapisz</a>
               </div>
-              <div class="good" *ngIf="good">
-              Zmodyfikowano kurs.
-              </div>-->
+              <div class="col-2">
+                  <button type="button" class="btn btn-secondary" routerLink="/course-list">wróć</button>
+              </div>
+              <div class="col-4"></div>
             </div>
       </form>    
       <div style="height: 40px"></div>

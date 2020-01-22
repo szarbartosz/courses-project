@@ -50,7 +50,7 @@
                     <hr>
                     <div class="form-group">
                         <textarea placeholder="Opis Kursu" ref-textarea [(ngModel)]="course.description"  name="desription" rows="4"
-                        cols="20" required #description = "ngModel"></textarea>
+                        cols="40" required #description = "ngModel"></textarea>
                         <div class="error" *ngIf="description.touched && description.errors?.required">
                             Wymagane podanie opisu kursu.
                         </div>
@@ -59,12 +59,6 @@
                     <div class="form-group">
                         <input placeholder="Adres URL zdjęcia kursu" name="image" [(ngModel)]="course.img" type="text" class="validate"
                             #courseImage="ngModel"  pattern="https://.+\.[jpg|gif|png|jpeg].*" required/>
-                        <!--<div class="error" *ngIf="courseImage.touched && courseImage.errors?.required">
-                            Wymagane podanie adresu url zdjęcia kursu.
-                        </div>
-                        <div class="error" *ngIf="courseImage.errors?.pattern && courseImage.touched">
-                            Niepoprawny adres url.
-                        </div>-->
                     </div>
                     <hr>
                 </div>
@@ -73,7 +67,15 @@
             <div class="row">
                 <div class="col-4"></div>
                 <div class="col-2 submit">
-                    <a class="btn btn-success text-white" (click)="addCourse()">Zapisz</a>
+                    <a class="btn btn-success text-white" (click)="addCourse()">zapisz</a>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-secondary" routerLink="/course-list">wróć</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
                     <div class = "error" *ngIf="error">
                         Wypełnij formularz poprawnie.
                     </div>
@@ -81,10 +83,6 @@
                         Dodano kurs.
                     </div>
                 </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-secondary" (click)="goBack()">wróć</button>
-                </div>
-                <div class="col-4"></div>
             </div>
         </form>
     </div>
