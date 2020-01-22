@@ -52,6 +52,11 @@ export class AddCourseComponent implements OnInit {
   addCourse() {
     if (this.validate()) {
       this.courseService.addCourse(this.course);
+      this.correct = true;
+      this.error = false;
+    }
+    else {
+      this.error = true;
     }
   }
 

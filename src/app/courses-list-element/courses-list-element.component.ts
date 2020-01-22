@@ -30,7 +30,7 @@ export class CoursesListElementComponent implements OnInit {
       case 1:
         return 'Ćwiczenia';
       case 2:
-        return 'Labolatoria';
+        return 'Laboratoria';
       case 3:
     }
   }
